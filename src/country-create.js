@@ -7,12 +7,19 @@ const fetch = !self.fetch ? System.import('isomorphic-fetch') : Promise.resolve(
 @inject(Lazy.of(HttpClient))
 export class Welcome {
   countryName = '';
+  errorMessage = '';
 
   constructor(getHttpClient) {
     this.getHttpClient = getHttpClient;
   }
 
   submit() {
+    this.errorMessage = '';
+    if (this.countryName == '') {
+      this.errorMessage = 'The name is missing';
+      return;
+    }
+
     const http = this.http = this.getHttpClient();
 
     http.configure(config => {

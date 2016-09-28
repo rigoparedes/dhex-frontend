@@ -6,6 +6,7 @@ module.exports = Page.create
   countryNameInput: get: -> element(By.valueBind('countryName'))
   saveButton: get: -> element(By.css('.btn.btn-default'))
   labelForInput: get: -> element(By.css('[for="countryName"]'))
+  errorMessage: get: -> element(By.css('.alert-danger'))
 
   save: value: (countryName) ->
     @countryNameInput.sendKeys(countryName)

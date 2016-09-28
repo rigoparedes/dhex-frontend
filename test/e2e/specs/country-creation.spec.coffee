@@ -18,3 +18,12 @@ describe 'Country Creation', ->
 
     Then ->
       expect(countryCreationPage.openAlertDialog()).toBe(true)
+
+
+  describe 'create country with empty name', ->
+    When ->
+      countryCreationPage.save('')
+
+    Then ->
+      expect(countryCreationPage.errorMessage.getText()).toBe 'The name is missing'
+      
