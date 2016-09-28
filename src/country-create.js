@@ -40,7 +40,11 @@ export class Welcome {
         body: this.countryName
       })
       .then(response => {
-        alert('The country was successfully saved');
+        if (response.status == 201) {
+          alert('The country was successfully saved');
+        } else if (response.status == 400) {
+          alert('The country name already exists');
+        }
       });
   }
 }

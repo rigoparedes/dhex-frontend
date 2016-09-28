@@ -26,4 +26,11 @@ describe 'Country Creation', ->
 
     Then ->
       expect(countryCreationPage.errorMessage.getText()).toBe 'The name is missing'
-      
+
+
+  describe 'create country already exists', ->
+    When ->
+      countryCreationPage.save('Surinam')
+
+    Then ->
+      expect(countryCreationPage.getAlertText()).toBe('The country name already exists')

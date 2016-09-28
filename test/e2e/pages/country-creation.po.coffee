@@ -24,3 +24,17 @@ module.exports = Page.create
             return false
         )
       )
+
+
+  getAlertText: value: () ->
+    browser.wait (->
+      browser.switchTo().alert().then (->
+        true
+      ), ->
+        false
+    ), 5000
+    popupAlert = browser.switchTo().alert()
+    alertText = popupAlert.getText()
+    popupAlert.accept()
+    alertText
+
